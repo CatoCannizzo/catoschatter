@@ -25,7 +25,7 @@ function TextInput(props) {
         onKeyPress={onKeyPress}
       />
       <button className="send" onClick={send}>
-        ↑
+        🡅
       </button>
     </footer>
   );

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Message from "./Message";
 
 function App() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([]); //sets up messages as a state & setMessages as function
   function sendMessage(text) {
     const newMessage = {
       text,
