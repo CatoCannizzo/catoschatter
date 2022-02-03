@@ -1,107 +1,109 @@
 .App {
-  background: linear-gradient(45deg, #485563, #29323c);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+	background: linear-gradient(45deg, #485563, #29323c);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .header {
-  height: 4rem;
-  width: 100%;
-  border-bottom: 2px solid white;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  background: rgba(255, 255, 255, 0.3);
+	height: 4rem;
+	width: 100%;
+	border-bottom: 2px solid white;
+	display: flex;
+	align-items: center;
+	padding: 0 1rem;
+	background: rgba(255, 255, 255, 0.3);
 }
 .logo {
-  height: 3.5rem;
-  width: 3.5rem;
-  background-image: url("Pictures/logo.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+	height: 3.5rem;
+	width: 3.5rem;
+	background-image: url("Pictures/logo.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .title {
-  color: white;
-  font-weight: bold;
-  font-size: 2rem;
-  margin-left: 1rem;
+	color: white;
+	font-weight: bold;
+	font-size: 2rem;
+	margin-left: 1rem;
 }
 .messages {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-  overflow: auto;
-  max-height: calc(100vh - 4rem - 4rem);
-  min-height: calc(100vh - 4rem - 4rem);
-  padding: 1rem;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-start;
+	overflow: auto;
+	flex: 1; /* makes this component as big as it can be in the left over space */
+	padding: 1rem;
 }
 .message {
-  color: white;
-  background: black;
-  padding: 0.5rem 1rem;
-  margin: 1rem 0.2rem; /*set first rem to 1/1.3 with for 2/3 floatys*/
-  border-radius: 0.3rem;
-  position: relative; /*for caret*/
+	color: white;
+	background: black;
+	padding: 0.5rem 1rem;
+	margin: 1rem 0.2rem; /*set first rem to 1/1.3 with for 2/3 floatys*/
+	border-radius: 0.3rem;
+	position: relative; /*for caret*/
+	min-height: 2rem;
+	max-width: 45%; /*This will need to be changed for mobile*/
+	overflow-wrap: break-word; /*unkown what this does*/
 
-  /*for fancy animation stuff*/
-  transform: translatey(0px);
-  animation: float 5s ease-in-out infinite;
-  background-color: black;
-  box-shadow: -0.25rem 0.25rem white;
+	/*for fancy animation stuff*/
+	transform: translatey(0px);
+	animation: float 5s ease-in-out infinite;
+	background-color: black;
+	box-shadow: -0.25rem 0.25rem white;
 }
 
 /*more animation stuff theres a end message for the end of this too*/
 .message:after {
-  transform: translatey(0px);
-  animation: float2 5s ease-in-out infinite;
+	transform: translatey(0px);
+	animation: float2 5s ease-in-out infinite;
 
-  width: 3rem;
-  height: 0.5rem;
-  border-radius: 0.3rem;
-  background-color: black;
-  position: absolute;
-  bottom: -1.25rem;
-  left: 0rem;
-  box-shadow: -0.15rem 0.15rem white;
-  content: "";
+	width: 3rem;
+	height: 0.5rem;
+	border-radius: 0.3rem;
+	background-color: black;
+	position: absolute;
+	bottom: -1.25rem;
+	left: 0rem;
+	box-shadow: -0.15rem 0.15rem white;
+	content: "";
 
-  /* text-shadow: -0.1rem 0.1rem white;
-  content: ".";
-  font-weight: bold;
-  color: black;
-  text-align: left;
-  font-size: 2.8rem; */
+	/* text-shadow: -0.1rem 0.1rem white;
+	content: ".";
+	font-weight: bold;
+	color: black;
+	text-align: left;
+	font-size: 2.8rem; */
 }
 
 @keyframes float {
-  0% {
-    transform: translatey(0);
-  }
-  70% {
-    transform: translatey(-0.2rem);
-  }
-  100% {
-    transform: translatey(0);
-  }
+	0% {
+		transform: translatey(0);
+	}
+	65% {
+		transform: translatey(-0.17rem);
+	}
+	100% {
+		transform: translatey(0);
+	}
 }
 
 @keyframes float2 {
-  0% {
-    line-height: 0.1rem;
-    transform: translatey(0);
-  }
-  55% {
-    transform: translatey(-0.2rem);
-  }
-  60% {
-    line-height: 0.6rem;
-  }
-  100% {
-    line-height: 0.1rem;
-    transform: translatey(0);
-  }
+	0% {
+		line-height: 0.1rem;
+		transform: translatey(0);
+	}
+	55% {
+		transform: translatey(-0.2rem);
+	}
+	60% {
+		line-height: 0.6rem;
+	}
+	100% {
+		line-height: 0.1rem;
+		transform: translatey(0);
+	}
 }
 /*end of animation stuff*/
 
