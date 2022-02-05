@@ -1,0 +1,81 @@
+body {
+	color: white;
+	font-size: 0.9rem;
+}
+.name-input {
+	width: 10rem;
+	border: 1px solid white;
+	height: 2rem;
+	border-radius: 1rem;
+	padding: 0 1rem;
+	background: black;
+	color: white;
+}
+.nameholder {
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	padding: 0 1rem;
+	position: relative;
+	margin-left: 5rem;
+}
+.editButton {
+	background: whitesmoke;
+	height: 1.7rem;
+	width: 1.7rem;
+	border: solid;
+	border-width: 0.1rem;
+	border-radius: 1rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin: 0 0 0 0.5rem;
+}
+.editButton:hover {
+	background: black;
+}
+
+.editButton svg {
+	/*allows us to customize our icon outside of the icon pack parameters, not nessary here but useful in general*/
+	stroke: black;
+	height: 2rem;
+	width: 2rem;
+}
+
+.editButton:hover svg {
+	stroke: white;
+}
+.submitName {
+	background: whitesmoke;
+	height: 1.7rem;
+	width: 1.7rem;
+	border: solid;
+	border-width: 0.1rem;
+	border-radius: 1rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin: 0 0 0 1rem;
+}
+.submitName:hover {
+	background: black;
+}
+
+.submitName svg {
+	/*allows us to customize our icon outside of the icon pack parameters, not nessary here but useful in general*/
+	stroke: black;
+	height: 2rem;
+	width: 2rem;
+}
+
+.submitName:hover svg {
+	stroke: white;
+}
+
+.name {
+	color: white;
+}

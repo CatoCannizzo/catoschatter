@@ -1,8 +1,9 @@
 import "./App.css";
-import TextInput from "./TextInput";
+import TextInput from "./Components/TextInput";
 import { useState } from "react";
-import Message from "./Message";
+import Message from "./Components/Message";
 import Camera from "react-snap-pic";
+import NamePicker from "./Components/NamePicker";
 
 //React component (Custom element for our entire react chat app)
 function App() {
@@ -13,20 +14,22 @@ function App() {
 
 	const [showCamera, setShowCamera] = useState(false);
 
+	let varName;
+
 	function takePicture(img) {
 		console.log(img);
 		setShowCamera(false);
 	}
 
 	//"sendsMessage runs whenever we click the send button"
-	function sendMessage(text) {
+	function sendMessage(text, name) {
 		//checks to make sure there is text being sent before continuing this function
 		if (!text.trim()) return;
 		//creates a new message object
 		const newMessage = {
 			text,
 			time: Date.now(),
-			user: "Cato",
+			user: varName,
 		};
 		//set the messages to be a new array that contains the new message + the old messages
 		setMessages([newMessage, ...messages]); //the ... is called a spread all items from old array + new array
@@ -39,6 +42,7 @@ function App() {
 			<header className="header">
 				<div className="logo" />
 				<span className="title">CHATTER!</span>
+				<NamePicker />
 			</header>
 			<div className="messages">
 				{messages.map((msg, i) => {

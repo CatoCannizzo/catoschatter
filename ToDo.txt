@@ -1,2 +1,6 @@
 App.js 
   Figure out pictures on mobile
+
+NamePicker.js 
+  Add error if invalid name input
+  Add name to messages

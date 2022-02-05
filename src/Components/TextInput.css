@@ -36,9 +36,9 @@
 
 .send svg {
 	/*allows us to customize our icon outside of the icon pack parameters, not nessary here but useful in general*/
-	height: 2rem; /*this size code doesn't actually work and we dont no why*/
-	width: 2rem;
 	stroke: black;
+	stroke-width: .1rem;
+
 }
 
 .send:hover svg {
@@ -64,9 +64,8 @@
 
 .camera svg {
 	/*allows us to customize our icon outside of the icon pack parameters, not nessary here but useful in general*/
-	height: 2rem; /*this size code doesn't actually work and we dont no why*/
-	width: 2rem;
 	stroke: black;
+	stroke-width: .1rem;
 }
 
 .camera:hover svg {
