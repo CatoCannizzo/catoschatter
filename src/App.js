@@ -2,6 +2,7 @@ import "./App.css";
 import TextInput from "./TextInput";
 import { useState } from "react";
 import Message from "./Message";
+import Camera from "react-snap-pic";
 
 //React component (Custom element for our entire react chat app)
 function App() {
@@ -9,6 +10,13 @@ function App() {
 	//the initial value is an empty array
 	//also creates a function called setMessages that updates this variable
 	const [messages, setMessages] = useState([]); //sets up messages as a state & setMessages as function
+
+	const [showCamera, setShowCamera] = useState(false);
+
+	function takePicture(img) {
+		console.log(img);
+		setShowCamera(false);
+	}
 
 	//"sendsMessage runs whenever we click the send button"
 	function sendMessage(text) {
@@ -43,8 +51,12 @@ function App() {
 					return <Message {...msg} key={i} />;
 				})}
 			</div>
+			{showCamera && <Camera takePicture={takePicture} />}
 			{/*the sendMessage prop on TextInput = sendMessage function (thing in blue) Here we have them the same so for accessibility*/}
-			<TextInput sendMessage={sendMessage} />
+			<TextInput
+				sendMessage={sendMessage}
+				showCamera={() => setShowCamera(true)}
+			/>
 		</div>
 	);
 }

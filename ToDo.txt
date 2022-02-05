@@ -1,2 +1,2 @@
-APP.css
-  Check & understand .message wordwrap  
+App.js 
+  Figure out pictures on mobile
