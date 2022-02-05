@@ -13,7 +13,7 @@ function App() {
 	//"sendsMessage runs whenever we click the send button"
 	function sendMessage(text) {
 		//checks to make sure there is text being sent before continuing this function
-		if (!text) return;
+		if (!text.trim()) return;
 		//creates a new message object
 		const newMessage = {
 			text,
