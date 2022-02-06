@@ -4,16 +4,15 @@ import "./NamePicker.css";
 
 function NamePicker(props) {
 	const [editName, setEditName] = useState(true);
-	const [name, setName] = useState("");
 
 	function enterName() {
-		if (!name.trim()) return;
+		if (!props.name.trim()) return;
 		setEditName(false);
-		setName(name);
+		props.setName(props.name);
 	}
 	function changeName() {
 		setEditName(true);
-		setName("");
+		props.setName("");
 	}
 
 	if (editName) {
@@ -23,8 +22,8 @@ function NamePicker(props) {
 					className="name-input"
 					maxLength={25}
 					placeholder="input name"
-					value={name} // sets value to current name
-					onChange={(e) => setName(e.target.value)} //in curly is function calls setText, e.target.value is what user inputs
+					value={props.name} // sets value to current name
+					onChange={(e) => props.setName(e.target.value)} //in curly is function calls setText, e.target.value is what user inputs
 				/>
 				<button className="editButton" onClick={enterName}>
 					<FiUserCheck />
@@ -35,7 +34,7 @@ function NamePicker(props) {
 		return (
 			<div className="nameholder">
 				{"Current User: "}
-				{name}
+				{props.name}
 				<button className="submitName" onClick={changeName}>
 					<FiEdit3 />
 				</button>

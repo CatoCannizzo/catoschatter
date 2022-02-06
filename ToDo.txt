@@ -3,4 +3,3 @@ App.js
 
 NamePicker.js 
   Add error if invalid name input
-  Add name to messages

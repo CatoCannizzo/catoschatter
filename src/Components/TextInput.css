@@ -37,8 +37,7 @@
 .send svg {
 	/*allows us to customize our icon outside of the icon pack parameters, not nessary here but useful in general*/
 	stroke: black;
-	stroke-width: .1rem;
-
+	stroke-width: 0.1rem;
 }
 
 .send:hover svg {
@@ -49,14 +48,15 @@
 	background: whitesmoke;
 	height: 1.7rem;
 	width: 1.7rem;
-	border: none;
+	border: solid;
+	border-width: 0.1rem;
 	border-radius: 1rem;
 	right: 1.1rem;
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0.2rem;
+	margin: 0.5rem;
 }
 .camera:hover {
 	background: black;
@@ -65,7 +65,7 @@
 .camera svg {
 	/*allows us to customize our icon outside of the icon pack parameters, not nessary here but useful in general*/
 	stroke: black;
-	stroke-width: .1rem;
+	stroke-width: 0.1rem;
 }
 
 .camera:hover svg {

@@ -36,6 +36,13 @@
 	flex: 1; /* makes this component as big as it can be in the left over space */
 	padding: 1rem;
 }
+.name {
+	font-size: 0.7rem;
+	margin: 0.6rem 0 -1rem 0;
+	/*for fancy animation stuff*/
+	transform: translatey(0px);
+	animation: float 5s ease-in-out infinite;
+}
 .message {
 	color: white;
 	background: black;
