@@ -7,7 +7,13 @@ function TextInput(props) {
 	//useState automatically updates everything through react magic
 
 	function send() {
-		props.sendMessage(text);
+		//creates a new message object
+		const newMessage = {
+			msgText: text,
+			msgTime: Date.now(),
+			msgUser: props.name,
+		};
+		props.sendMessage(newMessage);
 		setText("");
 	}
 	function onKeyPress(e) {

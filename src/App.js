@@ -5,6 +5,7 @@ import Message from "./Components/Message";
 import Camera from "react-snap-pic";
 import NamePicker from "./Components/NamePicker";
 import { Modal } from "./Components/Modal";
+import "./Components/Modal.css";
 
 //React component (Custom element for our entire react chat app)
 function App() {
@@ -15,7 +16,7 @@ function App() {
 	const [name, setName] = useState("");
 	const [showCamera, setShowCamera] = useState(false);
 	const [showModal, setShowModal] = useState(false);
-	const [Warning, setWarning] = useState([]);
+	const [Warning, setWarning] = useState("");
 	function takePicture(img) {
 		console.log(img);
 		setShowCamera(false);
@@ -27,32 +28,28 @@ function App() {
 	};
 
 	//"sendsMessage runs whenever we click the send button"
-	function sendMessage(text) {
+	function sendMessage(msgObj) {
 		//checks to make sure there is text being sent before continuing this function
-		if (!text.trim()) {
-			setWarning(["Please enter valid message.", ...messages]);
+		if (!msgObj.msgText.trim()) {
+			setWarning("Please enter valid message.");
 			openModal();
 			return;
 		}
-		if (!name.trim()) {
-			setWarning(["Please enter valid name.", ...messages]);
+		if (!msgObj.msgUser.trim()) {
+			setWarning("Please enter valid name.");
 			openModal();
 			return;
 		}
-		//creates a new message object
-		const newMessage = {
-			text,
-			time: Date.now(),
-			name,
-		};
+
 		//set the messages to be a new array that contains the new message + the old messages
-		setMessages([newMessage, ...messages]); //the ... is called a spread all items from old array + new array
+		setMessages([msgObj, ...messages]); //the ... is called a spread all items from old array + new array
 	}
 	//everytime state changes, React re-renders running everything in this main app again.
 
 	//Finally we return HTML
 	return (
 		<div className="App">
+			<div id="portal"></div>
 			<header className="header">
 				<div className="logo" />
 				<span className="title">CHATTER!</span>
@@ -81,11 +78,11 @@ function App() {
 				})}
 			</div>
 			{showCamera && <Camera takePicture={takePicture} />}
-			{showModal ? (
-				<Modal Warning={Warning} setShowModal={setShowModal} />
-			) : null}
+			{showModal && <Modal Warning={Warning} setShowModal={setShowModal} />}
+
 			{/*the sendMessage prop on TextInput = sendMessage function (thing in blue) Here we have them the same so for accessibility*/}
 			<TextInput
+				name={name}
 				sendMessage={sendMessage}
 				showCamera={() => setShowCamera(true)}
 			/>
