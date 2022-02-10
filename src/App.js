@@ -6,13 +6,15 @@ import Camera from "react-snap-pic";
 import NamePicker from "./Components/NamePicker";
 import { Modal } from "./Components/Modal";
 import "./Components/Modal.css";
+import Header from "./Components/Header";
+import { useDB, db } from "./db";
 
 //React component (Custom element for our entire react chat app)
 function App() {
 	//useState creates a 'magic' variable, here, called messages (The difference here is State create a nonstandard variable)
 	//the initial value is an empty array
 	//also creates a function called setMessages that updates this variable
-	const [messages, setMessages] = useState([]); //sets up messages as a state & setMessages as function
+	const messages = useDB(); //sets up messages as a state & setMessages as function
 	const [name, setName] = useState("");
 	const [showCamera, setShowCamera] = useState(false);
 	const [showModal, setShowModal] = useState(false);
@@ -30,19 +32,19 @@ function App() {
 	//"sendsMessage runs whenever we click the send button"
 	function sendMessage(msgObj) {
 		//checks to make sure there is text being sent before continuing this function
-		if (!msgObj.msgText.trim()) {
+		if (!msgObj.text.trim()) {
 			setWarning("Please enter valid message.");
 			openModal();
 			return;
 		}
-		if (!msgObj.msgUser.trim()) {
+		if (!msgObj.user.trim()) {
 			setWarning("Please enter valid name.");
 			openModal();
 			return;
 		}
 
 		//set the messages to be a new array that contains the new message + the old messages
-		setMessages([msgObj, ...messages]); //the ... is called a spread all items from old array + new array
+		db.send(msgObj); //the ... is called a spread all items from old array + new array
 	}
 	//everytime state changes, React re-renders running everything in this main app again.
 
@@ -50,11 +52,7 @@ function App() {
 	return (
 		<div className="App">
 			<div id="portal"></div>
-			<header className="header">
-				<div className="logo" />
-				<span className="title">CHATTER!</span>
-				<NamePicker name={name} setName={setName} />
-			</header>
+			<Header name={name} setName={setName} />
 			<div className="messages">
 				{
 					//blue curlies mean we jump to javascript
@@ -62,19 +60,7 @@ function App() {
 					//This means map is a loop
 				}
 				{messages.map((msg, i) => {
-					// if (msg.name == name) {
-					// 	//we are spreading all the itesm in msg into the props
-					// 	//key needs to be a unique calue for each item
-					// 	return <Message {...msg} key={i} />;
-					// } else {
-					// 	setWarning([
-					// 		"Incoming message from some other hooligan",
-					// 		...messages,
-					// 	]);
-					// 	openModal();
-					// 	return;
-					// }
-					return <Message {...msg} key={i} />;
+					return <Message {...msg} key={i} fromMe={msg.user == name} />;
 				})}
 			</div>
 			{showCamera && <Camera takePicture={takePicture} />}

@@ -9,9 +9,9 @@ function TextInput(props) {
 	function send() {
 		//creates a new message object
 		const newMessage = {
-			msgText: text,
-			msgTime: Date.now(),
-			msgUser: props.name,
+			text: text,
+			time: Date.now(),
+			user: props.name,
 		};
 		props.sendMessage(newMessage);
 		setText("");

@@ -43,6 +43,13 @@
 	transform: translatey(0px);
 	animation: float 5s ease-in-out infinite;
 }
+.messageRow {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	flex-direction: row;
+}
+
 .message {
 	color: white;
 	background: black;

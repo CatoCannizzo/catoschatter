@@ -1,5 +1,3 @@
 App.js 
   Figure out pictures on mobile
-
-NamePicker.js 
-  Add error if invalid name input
+  fix right side messages on send
