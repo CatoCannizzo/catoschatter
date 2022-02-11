@@ -11,10 +11,7 @@ import { useDB, db } from "./db";
 
 //React component (Custom element for our entire react chat app)
 function App() {
-	//useState creates a 'magic' variable, here, called messages (The difference here is State create a nonstandard variable)
-	//the initial value is an empty array
-	//also creates a function called setMessages that updates this variable
-	const messages = useDB(); //sets up messages as a state & setMessages as function
+	const messages = useDB();
 	const [name, setName] = useState("");
 	const [showCamera, setShowCamera] = useState(false);
 	const [showModal, setShowModal] = useState(false);
@@ -43,8 +40,7 @@ function App() {
 			return;
 		}
 
-		//set the messages to be a new array that contains the new message + the old messages
-		db.send(msgObj); //the ... is called a spread all items from old array + new array
+		db.send(msgObj);
 	}
 	//everytime state changes, React re-renders running everything in this main app again.
 
@@ -60,7 +56,14 @@ function App() {
 					//This means map is a loop
 				}
 				{messages.map((msg, i) => {
-					return <Message {...msg} key={i} fromMe={msg.user == name} />;
+					return (
+						<Message
+							{...msg}
+							key={i}
+							fromMe={msg.user == name}
+							noName={msg.user == ""}
+						/>
+					);
 				})}
 			</div>
 			{showCamera && <Camera takePicture={takePicture} />}
