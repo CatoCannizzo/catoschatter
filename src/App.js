@@ -3,7 +3,6 @@ import TextInput from "./Components/TextInput";
 import { useState } from "react";
 import Message from "./Components/Message";
 import Camera from "react-snap-pic";
-import NamePicker from "./Components/NamePicker";
 import { Modal } from "./Components/Modal";
 import "./Components/Modal.css";
 import Header from "./Components/Header";
