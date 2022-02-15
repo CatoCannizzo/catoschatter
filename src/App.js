@@ -60,7 +60,7 @@ function App() {
 							{...msg}
 							key={i}
 							fromMe={msg.user == name}
-							noName={msg.user == ""}
+							noName={!msg.user}
 						/>
 					);
 				})}
