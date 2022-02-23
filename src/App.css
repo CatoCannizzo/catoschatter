@@ -43,6 +43,15 @@
 	transform: translatey(0px);
 	animation: float 5s ease-in-out infinite;
 }
+
+.time {
+	font-size: 0.5rem;
+	margin: -1.8rem 0rem 1rem 1.2rem;
+	/*for fancy animation stuff*/
+	transform: translatey(0px);
+	animation: float 5s ease-in-out infinite;
+}
+
 .messageRow {
 	display: flex;
 	align-items: center;
@@ -53,7 +62,7 @@
 .message {
 	color: white;
 	background: black;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 1rem 0.75rem;
 	margin: 1rem 0.2rem; /*set first rem to 1/1.3 with for 2/3 floatys*/
 	border-radius: 0.3rem;
 	position: relative; /*for caret*/

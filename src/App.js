@@ -8,13 +8,43 @@ import "./Components/Modal.css";
 import Header from "./Components/Header";
 import { useDB, db } from "./db";
 
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	useParams,
+	Link,
+} from "react-router-dom";
+
+export default function Router() {
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<App />} />
+				<Route
+					path="/Page1"
+					element={<div style={{ color: "black" }}>Page1</div>}
+				/>
+				<Route path=":room" element={<App />} />
+			</Routes>
+		</BrowserRouter>
+	);
+}
+
 //React component (Custom element for our entire react chat app)
 function App() {
-	const messages = useDB();
-	const [name, setName] = useState("");
+	//if the params is empty (the : above means ANYTHING after /)
+	//default to home (which is /)
+	const params = useParams();
+	const room = params.room || "home";
+	const messages = useDB(room);
+	const myName = localStorage.getItem("name") || "";
+
+	const [name, setName] = useState(myName);
 	const [showCamera, setShowCamera] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const [Warning, setWarning] = useState("");
+
 	function takePicture(img) {
 		console.log(img);
 		setShowCamera(false);
@@ -48,6 +78,8 @@ function App() {
 		<div className="App">
 			<div id="portal"></div>
 			<Header name={name} setName={setName} />
+			<Link to="/room1">room1</Link>
+
 			<div className="messages">
 				{
 					//blue curlies mean we jump to javascript
@@ -70,6 +102,7 @@ function App() {
 
 			{/*the sendMessage prop on TextInput = sendMessage function (thing in blue) Here we have them the same so for accessibility*/}
 			<TextInput
+				room={room}
 				name={name}
 				sendMessage={sendMessage}
 				showCamera={() => setShowCamera(true)}
@@ -77,5 +110,3 @@ function App() {
 		</div>
 	);
 }
-
-export default App;

@@ -9,6 +9,8 @@ export default function Message(props) {
 			</div>
 		);
 	} else {
+		let formDay = new Date(props.time);
+		console.log(formDay.toLocaleDateString());
 		return (
 			<div
 				className="messageRow"
@@ -16,6 +18,7 @@ export default function Message(props) {
 				<div>
 					<div className="name">{props.user}</div>
 					<div className="message">{props.text}</div>
+					<div className="time">{formDay.toLocaleDateString()}</div>
 				</div>
 			</div>
 		);

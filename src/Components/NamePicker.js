@@ -3,13 +3,19 @@ import { FiEdit3, FiUserCheck } from "react-icons/fi";
 import "./NamePicker.css";
 
 function NamePicker(props) {
-	const [editName, setEditName] = useState(true);
+	//the ? below is called a turnary operator
+	//before the ? gets evaluted as true or false,
+	//the first thing after ? is what gets set if true
+	//the first thing after : is set if false
+	//here I have poor code style because false sets true and true sets false
+	const [editName, setEditName] = useState(props.name ? false : true);
 	const [varName, setVarName] = useState("");
 
 	function enterName() {
 		if (!varName.trim()) return;
 		setEditName(false);
 		props.setName(varName);
+		localStorage.setItem("name", varName);
 		setVarName("");
 	}
 	function changeName() {

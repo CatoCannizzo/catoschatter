@@ -12,6 +12,7 @@ function TextInput(props) {
 			text: text,
 			time: Date.now(),
 			user: props.name,
+			room: props.room,
 		};
 		props.sendMessage(newMessage);
 		setText("");
